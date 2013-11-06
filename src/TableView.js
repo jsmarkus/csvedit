@@ -19,7 +19,7 @@ var TableView = function() {
         dom.clear(this._element.innerHTML);
         this._element.appendChild(table);
 
-        dom.addEventListener(thead, 'click', function(e) {
+        dom.addEventListener(thead, 'click', function(event) {
             event = event || window.event; //IE fix
             if (!event.target) {
                 event.target = event.srcElement;
