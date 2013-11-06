@@ -25,7 +25,7 @@ var TableView = function() {
                 event.target = event.srcElement;
             }
 
-            var trg = e.target;
+            var trg = event.target;
             var index = trg.getAttribute('data-index');
             self._notifySort(index);
         });
