@@ -20,6 +20,11 @@ var TableView = function() {
         this._element.appendChild(table);
 
         dom.addEventListener(thead, 'click', function(e) {
+            event = event || window.event; //IE fix
+            if (!event.target) {
+                event.target = event.srcElement;
+            }
+
             var trg = e.target;
             var index = trg.getAttribute('data-index');
             self._notifySort(index);
