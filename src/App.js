@@ -37,11 +37,7 @@ var App = function() {
             var model = app.model;
             view.clear();
             var len = model.getLength();
-            //todo startTransaction(); commit()
-            for (var i = 0; i < len; i++) {
-                var row = model.getRow(i);
-                view.addRow(row);
-            }
+            app.view.setRows(app.model.getRows());
         });
 
         this.editor.bind('change', function(text) {
@@ -49,16 +45,29 @@ var App = function() {
             app.model.setFields(rows[0]);
             app.model.resetRows(rows.slice(1));
         });
+
+        this.view.bind('sort', function(fieldIndex) {
+            app.model.sortBy(fieldIndex);
+        });
+    };
+
+    App.prototype.example = function() {
+        var ex = [
+            'Foo, Bar, Baz',
+            '2,   5,   89',
+            '100, sdf, 34',
+            '45,  98,  b',
+            '11,  9.5, 45',
+            '154, 56,  b',
+            '87,  18,  s890',
+        ].join('\n');
+        this.editor.setText(ex);
     };
 
     App.prototype.run = function() {
         this.view.render();
         this._bindEvents();
-
-        var rows = this.parser.parse('0, asd, 234\n1,dsa,   smpg q');
-
-        this.model.setFields(rows[0]);
-        this.model.resetRows(rows);
+        this.example();
     };
 
     return App;

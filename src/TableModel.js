@@ -36,9 +36,17 @@ var TableModel = function() {
         this._sortColumn = colName;
     };
 
-    TableModel.prototype.sort = function(row) {
-        this.rows.sort(function() {
-            //todo: getColumnIndex... etc...
+    TableModel.prototype.sortBy = function(fieldIndex) {
+        this.rows.sort(function(row1, row2) {
+            var a = row1[fieldIndex];
+            var b = row2[fieldIndex];
+            if(a == b) {
+                return 0;
+            }
+            if(a > b) {
+                return 1;
+            }
+            return -1;
         });
         this._notifyReset();
     };
@@ -49,6 +57,10 @@ var TableModel = function() {
 
     TableModel.prototype.getRow = function(index) {
         return this.rows[index];
+    };
+
+    TableModel.prototype.getRows = function(index) {
+        return this.rows;
     };
 
     TableModel.prototype.getFields = function() {
