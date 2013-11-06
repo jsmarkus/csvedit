@@ -46,7 +46,8 @@ var App = function() {
 
         this.editor.bind('change', function(text) {
             var rows = app.parser.parse(text);
-            app.model.resetRows(rows);
+            app.model.setFields(rows[0]);
+            app.model.resetRows(rows.slice(1));
         });
     };
 

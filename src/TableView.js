@@ -36,8 +36,8 @@ var TableView = function() {
         var tr = document.createElement('TR');
         for (var i = 0; i < row.length; i++) {
             var cellValue = row[i];
-            var td = this._createHeaderCell(cellValue);
-            tr.appendChild(td);
+            var th = this._createHeaderCell(cellValue);
+            tr.appendChild(th);
         }
         dom.clear(this._headerContainer);
         this._headerContainer.appendChild(tr);

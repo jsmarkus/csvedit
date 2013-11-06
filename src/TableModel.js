@@ -21,11 +21,13 @@ var TableModel = function() {
     };
 
     TableModel.prototype.resetRows = function(rows) {
+        rows = rows || [];
         this.rows = rows;
         this._notifyReset();
     };
 
     TableModel.prototype.setFields = function(row) {
+        row = row || [];
         this.fields = row;
         this._notifyFields();
     };
