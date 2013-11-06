@@ -4,13 +4,14 @@ var TableModel = function() {
 
     function TableModel() {
         this.rows = [];
+        this.fields = [];
     }
 
     mixinEvents(TableModel);
 
     TableModel.prototype.clear = function() {
         this.rows = [];
-        this._notifyReset();
+        this._notifyClear();
     };
 
     TableModel.prototype.addRow = function(row) {
@@ -22,6 +23,11 @@ var TableModel = function() {
     TableModel.prototype.resetRows = function(rows) {
         this.rows = rows;
         this._notifyReset();
+    };
+
+    TableModel.prototype.setFields = function(row) {
+        this.fields = row;
+        this._notifyFields();
     };
 
     TableModel.prototype.setSortColumn = function(colName) {
@@ -43,12 +49,24 @@ var TableModel = function() {
         return this.rows[index];
     };
 
+    TableModel.prototype.getFields = function() {
+        return this.fields;
+    };
+
     TableModel.prototype._notifyAdd = function(index) {
         this.trigger('add', index);
     };
 
     TableModel.prototype._notifyReset = function() {
         this.trigger('reset');
+    };
+
+    TableModel.prototype._notifyClear = function() {
+        this.trigger('clear');
+    };
+
+    TableModel.prototype._notifyFields = function() {
+        this.trigger('fields');
     };
 
 

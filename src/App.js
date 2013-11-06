@@ -24,6 +24,14 @@ var App = function() {
             app.view.addRow(row);
         });
 
+        this.model.bind('clear', function() {
+            app.view.clear();
+        });
+
+        this.model.bind('fields', function() {
+            app.view.setHead(app.model.getFields());
+        });
+
         this.model.bind('reset', function() {
             var view = app.view;
             var model = app.model;
@@ -48,6 +56,7 @@ var App = function() {
 
         var rows = this.parser.parse('0, asd, 234\n1,dsa,   smpg q');
 
+        this.model.setFields(rows[0]);
         this.model.resetRows(rows);
     };
 
