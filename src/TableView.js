@@ -7,6 +7,7 @@ var TableView = function() {
 
     TableView.prototype.render = function() {
         var table = document.createElement('TABLE');
+        table.setAttribute('class', 'csvedit-table-table');
         var tbody = document.createElement('TBODY');
         this._rowsContainer = tbody;
         table.appendChild(tbody);
