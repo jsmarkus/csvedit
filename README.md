@@ -1,6 +1,10 @@
 Test job - csvedit
 ==================
 
+### Demo
+
+http://jsmarkus.github.io/csvedit/
+
 ### Features:
 
  * the table is updated while the user types CSV
