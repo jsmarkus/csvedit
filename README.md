@@ -30,10 +30,12 @@ This is MVC.
 
 ### Known bugs
 
-CSS styling in IE looks weird -_-
+ * CSS styling in IE looks weird -_-
+ * The values are sorted like strings
 
 ### Future improvements
 
  * Fix CSS for IE
  * Make normal Parser, that would parse CSV respecting quotes and escapes. Technologies - JISON parser generator.
  * Subscribe to incremental updates from textarea - detect which lines have been changed instead of redrawing all at once. Technologies: watch the caret position. If impossible, use textarea replacement libraries. Or use some kind of quick diff algorithm (for example store and compare SHA sum of each line) - for detecting which lines are actually changed.
+ * Sort values respecting types. Parser needs to detect types when parsing cells. Technologies: plain JavaScript.
